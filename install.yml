@@ -1,0 +1,30 @@
+---
+- hosts: all
+  become: true
+  vars:
+    rbenv:
+      env: user
+      version: v1.1.2
+      default_ruby: 2.7.2
+      rubies:
+      - version: 2.7.2
+    rbenv_extra_depends:
+      - acl
+  pre_tasks:
+  - group:
+       name: app_pef
+  - user:
+       name: app_perf
+  - package:
+       name: libpq-dev
+  roles:
+    - role: geerlingguy.apache
+    - role: zzet.rbenv
+      rbenv_users:
+        - app_perf
+    - role: tulibraries.ansible_role_passenger_apache
+    - role: tulibraries.ansible_rails_app
+      rails_app_name: app_perf
+      rails_app_git_url: https://github.com/infraoptics/app_perf
+      rails_app_git_branch: update_mimemagic
+      rails_app_bundler_configs: []
