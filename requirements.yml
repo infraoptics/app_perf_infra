@@ -1,7 +1,10 @@
-# from galaxy
-- src: tulibraries.ansible_role_passenger_apache
-- src: tulibraries.ansible_rails_app
-- src: geerlingguy.apache
-- src: zzet.rbenv
-- src: https://github.com/DeepOps/ansible-role-users
-- src: https://github.com/engonzal/ansible_role_package
+roles:
+  - name: tulibraries.ansible_role_passenger_apache
+  - name: ansible-rails_app
+    src: https://github.com/infraoptics/ansible-rails_app.git
+    version: ubuntu_modifications
+  - name: geerlingguy.apache
+  - name: geerlingguy.postgresql
+  - name: zzet.rbenv
+  - name: ansible-role-rbenv_users
+    src: https://github.com/DeepOps/ansible-role-users

@@ -1,6 +1,8 @@
 ---
 - hosts: all
   become: true
+  vars_files:
+    - vars/main.yml
   vars:
     rbenv:
       env: user
@@ -19,12 +21,14 @@
        name: libpq-dev
   roles:
     - role: geerlingguy.apache
+    - role: geerlingguy.postgresql
     - role: zzet.rbenv
       rbenv_users:
         - app_perf
     - role: tulibraries.ansible_role_passenger_apache
-    - role: tulibraries.ansible_rails_app
+    - role: ansible-rails_app
       rails_app_name: app_perf
       rails_app_git_url: https://github.com/infraoptics/app_perf
       rails_app_git_branch: update_mimemagic
       rails_app_bundler_configs: []
+      rails_app_additional_config: ['database.yml']

@@ -1,0 +1,7 @@
+postgresql_databases:
+  - name: app_perf_production
+postgresql_users:
+  - name: app_perf
+    password: app_perf
+    role_attr_flags: SUPERUSER
+    db: app_perf_production
