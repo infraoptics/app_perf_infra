@@ -5,7 +5,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "generic/ubuntu2004"
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "install.yml"
+    ansible.playbook = "install_app.yml"
     ansible.verbose = "v"
     ansible.vault_password_file = "./vault_password"
   end

@@ -1,0 +1,23 @@
+---
+- hosts: database
+  become: true
+  vars_files:
+    - vars/main.yml
+  vars:
+    rbenv:
+      env: user
+      version: v1.1.2
+      default_ruby: 2.7.2
+      rubies:
+      - version: 2.7.2
+    rbenv_extra_depends:
+      - acl
+  pre_tasks:
+  - group:
+       name: app_pef
+  - user:
+       name: app_perf
+  - package:
+       name: libpq-dev
+  roles:
+    - role: geerlingguy.postgresql

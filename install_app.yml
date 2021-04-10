@@ -12,6 +12,9 @@
       - version: 2.7.2
     rbenv_extra_depends:
       - acl
+    passenger_webserver: apache2
+  roles:
+    - role: mrlesmithjr.apache2
   pre_tasks:
   - group:
        name: app_pef
@@ -21,11 +24,11 @@
        name: libpq-dev
   roles:
     - role: geerlingguy.apache
+    - role: ansible-passenger
     - role: geerlingguy.postgresql
     - role: zzet.rbenv
       rbenv_users:
         - app_perf
-    - role: tulibraries.ansible_role_passenger_apache
     - role: ansible-rails_app
       rails_app_name: app_perf
       rails_app_git_url: https://github.com/infraoptics/app_perf

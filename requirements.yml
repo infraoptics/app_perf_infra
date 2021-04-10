@@ -1,5 +1,5 @@
 roles:
-  - name: tulibraries.ansible_role_passenger_apache
+  - src: https://github.com/mrlesmithjr/ansible-passenger.git
   - name: ansible-rails_app
     src: https://github.com/infraoptics/ansible-rails_app.git
     version: ubuntu_modifications
